@@ -1,11 +1,9 @@
 // Set the correct sprite paths
 $iconSpritePath: image-path('glyphicons-halflings.png');
 $iconWhiteSpritePath: image-path('glyphicons-halflings-white.png');
-
-$navbarBackground: #000;
-$navbarBackgroundHighlight: #888;
-$navbarText: #eee;
-$navbarLinkColor: #eee;
+$bodyBackground: #FFFFFF;
+$navbarBackground: #000000;
+$navbarBackgroundHighlight: #000000;
 
 @import "bootstrap";
 
@@ -14,5 +12,24 @@ body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
 .navbar .brand {
+  height: 20px;
   color: #FAFFB8;
+  overflow: hidden;
+}
+
+.hero-unit {
+  background-image: url(image-path('white_whale_logo_big.png'));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 110%;
+  color: white;
+  background-color: transparent; 
+  margin-top: 1em;
+}
+
+.logo {
+  height: 96px;
+  margin-top: -2em;
+  margin-right: 1em;
+
 }
