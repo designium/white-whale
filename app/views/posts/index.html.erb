@@ -1,33 +1,4 @@
-<header>
-
-  <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">    <%= image_tag "white_whale_logo_big.png", class: "logo"%></a>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li><a href="#">Home</a></li>
-
-            </ul>
-
-
-            <ul class="nav pull-right">
-              <li><a href="#">Sign Up</a></li>
-            </ul>
-
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-  </div>
-
-
-</header>
-<!-- END of header and menu parts -->  
+ 
 
 <!-- This is the main section of the site --> 
 <div role="main">
@@ -36,18 +7,20 @@
   </div>
   <!--  Posts  -->
   <div class="container">
+    <% for post in @posts %>
     <div class="row">
       <div class="span3">
-        <h2>Boo</h2>
-        <p>Author: Chim Kan
+        <h2><%= best_in_place post, :title %></h2>
+        <p>Author: <%=  %>
           <br />
-          Posted: April 28th 2012
+          Posted: <%= post.updated_at.strftime("%m/%d/%Y") %>
         </p>
       </div>
       <div class="span9">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at dolor tortor, et sollicitudin risus. Etiam mollis hendrerit metus vel iaculis. Integer ut nibh libero. Nunc eget dui et odio suscipit faucibus eget ac urna. Maecenas sollicitudin pharetra felis, vel cursus purus tempus eget. Sed tempus risus eget ipsum ultricies et commodo odio ullamcorper. In dolor mi, luctus id condimentum eleifend, facilisis ac lectus. Pellentesque condimentum aliquam erat sed accumsan. Suspendisse potenti. Mauris vel orci tincidunt magna gravida rutrum. Cras a arcu nisi, eu dictum nisi. Nulla nec dolor augue. Vestibulum eros risus, elementum sit amet pellentesque ac, tempus in massa.
+        <%= best_in_place post, :content, type: :textarea %>
       </div>
     </div>
+    <% end %>
   </div>
   <!--  End of posts -->
 
@@ -63,3 +36,22 @@
   </p>
   </div>
 </footer>
+
+================
+
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for post in @posts %>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= link_to "Show", post %></td>
+      <td><%= link_to "Edit", edit_post_path(post) %></td>
+      <td><%= link_to "Destroy", post, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Post", new_post_path %></p>

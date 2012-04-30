@@ -4,6 +4,7 @@ $iconWhiteSpritePath: image-path('glyphicons-halflings-white.png');
 $bodyBackground: #FFFFFF;
 $navbarBackground: #000000;
 $navbarBackgroundHighlight: #000000;
+$japanesePaper: #FFFCB8;
 
 @import "bootstrap";
 
@@ -31,5 +32,38 @@ body { padding-top: 60px; }
   height: 96px;
   margin-top: -2em;
   margin-right: 1em;
+}
 
+.best_in_place:hover {
+  background-color: $japanesePaper;
+  padding-top: 3px;
+  border-color: rgba(82, 168, 236, .8);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+  -moz-box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+  outline: 0;
+}
+
+.best_in_place {
+padding: .1m;
+cursor: hand;
+cursor: pointer;
+-moz-transition: background 0.5s linear;
+-o-transition: background 0.5s linear;
+-webkit-transition: background 0.5s linear;
+}
+
+.purr {
+  position: fixed;
+  top: 30px;
+  right: 100px;
+  width: 250px;
+  padding: 20px;
+  background-color: #FCC;
+  border: solid 2px #C66;
+  &:first-letter { text-transform: uppercase; }
+}
+
+input, textarea {
+  background-color: $japanesePaper;
 }
