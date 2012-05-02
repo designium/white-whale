@@ -1,5 +1,12 @@
 WhiteWhale::Application.routes.draw do
 
+
+  match "password_resets/new"
+
+  match 'signup', to: 'users#new', as: 'signup'
+  match 'login', to: 'sessions#new', as: 'login'
+  match 'logout', to: 'sessions#destroy', as: 'logout'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -15,7 +22,10 @@ WhiteWhale::Application.routes.draw do
   #   resources :products
 
   resources :posts
-
+  resources :users
+  resources :sessions
+  resources :password_resets
+  
   # Sample resource route with options:
   #   resources :products do
   #     member do

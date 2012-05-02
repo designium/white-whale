@@ -15,6 +15,11 @@
           <br />
           Posted: <%= post.updated_at.strftime("%m/%d/%Y") %>
         </p>
+        <% if current_user %>
+          <p>
+            <%= link_to "Destroy", post, :confirm => 'Are you sure?', :method => :delete, class: "btn btn-danger btn-small" %>
+          </p>
+        <% end %>
       </div>
       <div class="span9">
         <%= best_in_place post, :content, type: :textarea %>
@@ -26,32 +31,3 @@
 
 </div>
 <!-- END of main section --> 
-
-
-<!-- START of footer --> 
-<footer class="footer"  style="margin-top: 1em;">
-  <div class="container">
-  <p>
-    All rights reserved. White Whale - 2012.
-  </p>
-  </div>
-</footer>
-
-================
-
-
-<table>
-  <tr>
-    <th>Name</th>
-  </tr>
-  <% for post in @posts %>
-    <tr>
-      <td><%= post.title %></td>
-      <td><%= link_to "Show", post %></td>
-      <td><%= link_to "Edit", edit_post_path(post) %></td>
-      <td><%= link_to "Destroy", post, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
-
-<p><%= link_to "New Post", new_post_path %></p>

@@ -21,13 +21,18 @@
           <a class="brand" href="/">    <%= image_tag "white_whale_logo_big.png", class: "logo"%></a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li><a href="#">Home</a></li>
-
+              <li><%= link_to "Home", root_url %></li>
+              <li><%= link_to "New Post", new_post_url if current_user %></li>
             </ul>
 
 
             <ul class="nav pull-right">
-              <li><a href="#">Sign Up</a></li>
+              <%  unless current_user  %>
+                <li><%= link_to "Sign Up", signup_url %></li>
+                <li><%= link_to "Login", login_url %></li>
+              <% else %>
+                <li><%= link_to "Logout", logout_url %></li>
+              <% end %>
             </ul>
 
           </div><!--/.nav-collapse -->
@@ -38,9 +43,26 @@
 
 </header>
 <!-- END of header and menu parts --> 
-
+<div class="container">
+  <% flash.each do |name, msg| %>
+    <div class="alert alert_<%= name %>">
+      <a class="close" data-dismiss="alert">×</a>
+          <%= content_tag :div, msg, class: "alert_#{name}" %>
+    </div>
+  <% end %>
+</div>
 
 <%= yield %>
 
+
+
+<!-- START of footer --> 
+<footer class="footer"  style="margin-top: 1em;">
+  <div class="container">
+  <p>
+    All rights reserved. White Whale - 2012.
+  </p>
+  </div>
+</footer>
 </body>
 </html>
