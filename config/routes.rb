@@ -1,8 +1,5 @@
 WhiteWhale::Application.routes.draw do
 
-
-  match "password_resets/new"
-
   match 'signup', to: 'users#new', as: 'signup'
   match 'login', to: 'sessions#new', as: 'login'
   match 'logout', to: 'sessions#destroy', as: 'logout'
